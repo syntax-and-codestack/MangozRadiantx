@@ -52,19 +52,8 @@ const char* getTexdefTypeIdLabel(){
 const char* BrushType_getName( EBrushType type ){
 	switch ( type )
 	{
-	case eBrushTypeQuake:
-	case eBrushTypeQuake2:
-	case eBrushTypeQuake3:
-		return "Axial Projection";
-	case eBrushTypeQuake3BP:
-		return "Brush Primitives";
-	case eBrushTypeQuake3Valve220:
-	case eBrushTypeValve220:
-		return "Valve 220";
-	case eBrushTypeDoom3:
-		return "Doom3";
-	case eBrushTypeQuake4:
-		return "Quake4";
+	case eBrushTypeAdvancedWarfare:
+		return "IW";
 	default:
 		return "unknown";
 	}
