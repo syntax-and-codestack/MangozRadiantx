@@ -29,14 +29,7 @@
 
 enum EBrushType
 {
-	eBrushTypeQuake,
-	eBrushTypeQuake2,
-	eBrushTypeQuake3,
-	eBrushTypeQuake3BP,
-	eBrushTypeQuake3Valve220,
-	eBrushTypeDoom3,
-	eBrushTypeQuake4,
-	eBrushTypeValve220,
+    eBrushTypeAdvancedWarfare
 };
 
 
@@ -93,10 +86,10 @@ virtual void forEachFaceInstance( const BrushInstanceVisitor& visitor ) = 0;
 };
 #endif
 
-class _QERFaceData
+class _IWFaceData
 {
 public:
-_QERFaceData() : m_shader( "" ), contents( 0 ), flags( 0 ), value( 0 ){
+_IWFaceData() : m_shader( "" ), contents( 0 ), flags( 0 ), value( 0 ){
 }
 Vector3 m_p0;
 Vector3 m_p1;
@@ -108,9 +101,9 @@ int flags;
 int value;
 };
 
-typedef Callback1<const _QERFaceData&> BrushFaceDataCallback;
+typedef Callback1<const _IWFaceData&> BrushFaceDataCallback;
 
-class BrushCreator
+class IwBrushCreator
 {
 public:
 INTEGER_CONSTANT( Version, 1 );
@@ -126,14 +119,14 @@ virtual bool Brush_addFace( scene::Node& brush, const _QERFaceData& faceData ) =
 
 template<typename Type>
 class GlobalModule;
-typedef GlobalModule<BrushCreator> GlobalBrushModule;
+typedef GlobalModule<IwBrushCreator> IwGlobalBrushModule;
 
 template<typename Type>
 class GlobalModuleRef;
-typedef GlobalModuleRef<BrushCreator> GlobalBrushModuleRef;
+typedef GlobalModuleRef<IwBrushCreator> IwGlobalBrushModuleRef;
 
-inline BrushCreator& GlobalBrushCreator(){
-	return GlobalBrushModule::getTable();
+inline IwBrushCreator& IwGlobalBrushCreator(){
+	return IwGlobalBrushModule::getTable();
 }
 
 #endif
